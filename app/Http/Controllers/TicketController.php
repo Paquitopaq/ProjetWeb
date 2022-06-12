@@ -12,11 +12,17 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     
     {
-        //
+        $tickets = Ticket::paginate(30);
+
+        return view('tickets.admin_ticket', compact('tickets'));
     }
 
     public function test()
@@ -89,6 +95,12 @@ class TicketController extends Controller
     public function destroy(Ticket $ticket)
     {
         //
+    }
+
+    public function userTickets()
+    {
+        $tickets = Ticket::where('users_id', Auth::user()->id)->paginate(10);
+        return view('tickets.user_tickets', compact('tickets'));
     }
 
     
