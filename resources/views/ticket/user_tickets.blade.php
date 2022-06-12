@@ -5,7 +5,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-ticket"> Mes tickets</i>
+                    <i class="fa fa-ticket">Mes tickets</i>
                 </div>
                 <div class="panel-body">
                     @if($tickets->isEmpty())

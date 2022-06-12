@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Category;
 
 class TicketController extends Controller
 {
@@ -20,9 +22,8 @@ class TicketController extends Controller
     public function index()
     
     {
-        $tickets = Ticket::paginate(30);
-
-        return view('tickets.admin_ticket', compact('tickets'));
+        $tickets = Ticket::paginate(10);
+        return view('ticket.admin_ticket', compact('tickets'));
     }
 
     public function test()
@@ -99,8 +100,8 @@ class TicketController extends Controller
 
     public function userTickets()
     {
-        $tickets = Ticket::where('users_id', Auth::user()->id)->paginate(10);
-        return view('tickets.user_tickets', compact('tickets'));
+        $tickets = Ticket::where('users_id', Auth::user()->id)->paginate(30);
+        return view('ticket.user_tickets', compact('tickets'));
     }
 
     
