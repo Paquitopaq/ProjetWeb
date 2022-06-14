@@ -16,14 +16,14 @@ class Ticket extends Model
     ];
     public function category()
     {
-        return $this->belongsTo(Categorie::class);
+        return $this->belongsTo('App\Models\Categorie','categories_id');
     }
     public function comments()
     {
-        return $this->hasMany(Commentaire::class);
+        return $this->hasMany('App\Models\Commentaires','commentaires_id');
     }
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\User','users_id');
     }
 }

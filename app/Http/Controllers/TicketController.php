@@ -6,6 +6,7 @@ use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Categorie;
+use Illuminate\Support\Str;
 
 class TicketController extends Controller
 {
@@ -54,28 +55,46 @@ class TicketController extends Controller
         $this->validate($request,
         [
             'titre' => 'required',
-            'categorie' => 'required',
-            'priorité' => 'required',
-            'message' => 'required'
+            // 'categorie' => 'required',
+            // 'priorite' => 'required',
+            // 'message' => 'required'
         ]);
 
-        $ticket = new Ticket(
-        [
-            'titre' => $request->input('titre'),
-            'user_id' => Auth::user()->id,
-            'ticket_id' => strtoupper(str_random(10)),
-            'categorie_id' => $request->input('categorie'),
-            'priorité' => $request->input('priorité'),
-            'description_probleme' => $request->input('description_probleme'),
-            'status_ticket' => "Ouvert"
-        ]);
-        $user = auth()->user()->id;
-        // DB::insert("INSERT INTO laravel.tickets (id, titre, users_id,priorité,description_probleme) VALUES (?, ?, ?,?,?);", [$id, $titre, $user,$priorité,$description_probleme]);
+        $ticket = new Ticket();
+        $ticket-> titre = $request->input('titre');
+        $ticket-> users_id = auth()->user()->id;
+        $ticket-> ticket_id = strtoupper(str_random(10));
+        $ticket-> description_probleme = "test";
+        $ticket-> categorie_id = 1;
+        $ticket-> priorité = "low"; 
+        $ticket-> status_ticket="Ouvert";     
+        // $ticket-> description_probleme = "blablaba";
+        // $ticket-> categorie_id = 5;
+        // $ticket-> priorite = "Haute";
+        // $ticket-> status_ticket = "ouvert";
+        // $ticket-> ticket_id= "55";     
+        
         $ticket->save();
+        
+        
 
         return redirect()->back()->with("status_ticket", "Le ticket: #$ticket->ticket_id a été pris en compte.");
+        // redirect()->back()->with("status_ticket", "Le ticket: #$ticket->ticket_id a été pris en compte.");
     
     }
+    // $ticket = new Ticket(
+    //     [
+    //         'titre' => $request->input('titre'),
+    //         'users_id' => Auth::user()->id,
+    //         'ticket_id' => strtoupper(str_random(10)),
+    //         'categorie_id' => $request->input('categorie'),
+    //         'priorité' => $request->input('priorité'),
+    //         'description_probleme' => $request->input('description_probleme'),
+    //         'status_ticket' => "Ouvert"
+    //     ]);
+    //     $ticket->save();
+    /** *$user = auth()->user()->id;
+    *DB::insert("INSERT INTO laravel.tickets (id, titre, users_id,priorité,description_probleme) VALUES (?, ?, ?,?,?);", [$id, $titre, $user,$priorité,$description_probleme]);*/
 
     /**
      * Display the specified resource.

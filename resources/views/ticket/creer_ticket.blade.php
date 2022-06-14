@@ -24,11 +24,12 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('categories') ? ' has-error' : '' }}">
+                        <!--<div class="form-group{{ $errors->has('categories') ? ' has-error' : '' }}">
                             <label for="categories" class="col-md-4 control-label">categories</label>
                             <div class="col-md-6">
                                 <select id="categories" type="categories" class="form-control" name="categories">
                                     <option value="">Categories</option>
+                                    <option value="Sale con">Sale con</option>
                                     @foreach ($categories as $categories)
                                         <option value="{{ $categories->id }}">{{ $categories->name }}</option>
                                     @endforeach
@@ -66,7 +67,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div>-->
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

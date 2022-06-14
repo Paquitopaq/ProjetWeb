@@ -16,7 +16,7 @@ class Commentaires extends Model
     ];
     public function ticket()
     {
-        return $this->belongsTo(Ticket::class);
+        return $this->belongsTo('App\Models\Ticket','ticket_id');
     }
     public function user()
     {

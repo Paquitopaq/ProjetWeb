@@ -19,14 +19,13 @@ class CreateTicketsTable extends Migration
             $table->integer('users_id');
             $table->string('description_probleme');
             $table->integer('categorie_id')->unsigned();
-            $table->string('priorité');
+            $table->string('priorite');
             $table->string('titre');
             $table->string('status_ticket');
             $table->string('ticket_id')->unique();
 
         });
     }
-
     /**
      * Reverse the migrations.
      *

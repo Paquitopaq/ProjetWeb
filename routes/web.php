@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('bonjour');
+    return view('auth.login');
 });
 
-Auth::routes();
+
 
 
 Route::get('/ticket', 'App\Http\Controllers\TicketController@test');
@@ -43,4 +43,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
