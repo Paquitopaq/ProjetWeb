@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Category;
+use App\Models\Categorie;
 
 class TicketController extends Controller
 {
@@ -39,7 +39,8 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Categorie::all();
+        return view('ticket.creer_ticket', compact('categories'));
     }
 
     /**
@@ -50,7 +51,30 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,
+        [
+            'titre' => 'required',
+            'categorie' => 'required',
+            'priorité' => 'required',
+            'message' => 'required'
+        ]);
+
+        $ticket = new Ticket(
+        [
+            'titre' => $request->input('titre'),
+            'users_id' => Auth::user()->id,
+            'ticket_id' => strtoupper(str_random(10)),
+            'categorie_id' => $request->input('categorie'),
+            'priorité' => $request->input('priorité'),
+            'description_probleme' => $request->input('description_probleme'),
+            'status_ticket' => "Ouvert"
+        ]);
+        $user = auth()->user()->id;
+        DB::insert("INSERT INTO laravel.tickets (id, titre, users_id,priorité,description_probleme) VALUES (?, ?, ?,?,?);", [$id, $titre, $user,$priorité,$description_probleme]);
+        $ticket->save();
+
+        return redirect()->back()->with("status_ticket", "Le ticket: #$ticket->ticket_id a été pris en compte.");
+    
     }
 
     /**
@@ -61,7 +85,8 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        $ticket = Ticket::where('ticket_id', $ticket_id)->firstOrFail();
+        return view('ticket.display', compact('ticket'));
     }
 
     /**
@@ -104,5 +129,13 @@ class TicketController extends Controller
         return view('ticket.user_tickets', compact('tickets'));
     }
 
+    public function close($ticket_id)
+    {
+        $ticket = Ticket::where('ticket_id', $ticket_id)->firstOrFail();
+        $ticket->status = "Fermé";
+        $ticket->save();
+        $ticketOwner = $ticket->user;
+        return redirect()->back()->with("status_ticket", "Le ticket a été traité");
     
+}
 }
