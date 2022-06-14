@@ -62,7 +62,7 @@ class TicketController extends Controller
         $ticket = new Ticket(
         [
             'titre' => $request->input('titre'),
-            'users_id' => Auth::user()->id,
+            'user_id' => Auth::user()->id,
             'ticket_id' => strtoupper(str_random(10)),
             'categorie_id' => $request->input('categorie'),
             'priorité' => $request->input('priorité'),
@@ -70,7 +70,7 @@ class TicketController extends Controller
             'status_ticket' => "Ouvert"
         ]);
         $user = auth()->user()->id;
-        DB::insert("INSERT INTO laravel.tickets (id, titre, users_id,priorité,description_probleme) VALUES (?, ?, ?,?,?);", [$id, $titre, $user,$priorité,$description_probleme]);
+        // DB::insert("INSERT INTO laravel.tickets (id, titre, users_id,priorité,description_probleme) VALUES (?, ?, ?,?,?);", [$id, $titre, $user,$priorité,$description_probleme]);
         $ticket->save();
 
         return redirect()->back()->with("status_ticket", "Le ticket: #$ticket->ticket_id a été pris en compte.");
