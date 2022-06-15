@@ -27,7 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/nouveau-ticket', 'App\Http\Controllers\TicketController@create');
 Route::post('/nouveau-ticket', 'App\Http\Controllers\TicketController@store');
 Route::get('/mes_tickets', 'App\Http\Controllers\TicketController@userTickets');
-Route::get('/tickets/{ticket_id}', 'TicketController@show');
+Route::get('/tickets/{ticket_id}', 'App\Http\Controllers\TicketController@show');
 Route::post('/commentaire', 'CommentaireController@postComment');
 
 

@@ -27,7 +27,7 @@
                             @foreach ($tickets as $ticket)
                                 <tr>
                                     <td>
-                                        {{ $ticket->categories->name }}
+                                        {{ $ticket->categorie}}
                                     </td>
                                     <td>
                                         <a href="{{ url('tickets/'. $ticket->ticket_id) }}">
@@ -35,7 +35,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        @if ($ticket->status === 'Open')
+                                        @if ($ticket->status === 'Ouvert')
                                             <span class="label label-success">{{ $ticket->status }}</span>
                                         @else
                                             <span class="label label-danger">{{ $ticket->status }}</span>
@@ -43,7 +43,7 @@
                                     </td>
                                     <td>{{ $ticket->updated_at }}</td>
                                     <td>
-                                        @if($ticket->status === 'Open')
+                                        @if($ticket->status === 'Ouvert')
                                             <a href="{{ url('tickets/' . $ticket->ticket_id) }}" class="btn btn-primary">Comment</a>
                                             <form action="{{ url('admin/close_ticket/' . $ticket->ticket_id) }}" method="POST">
                                                 {!! csrf_field() !!}

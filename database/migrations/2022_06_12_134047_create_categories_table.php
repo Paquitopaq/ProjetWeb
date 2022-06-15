@@ -17,8 +17,8 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            DB::query('insert into categories (id, name) values ("1", "projet1")');
-            DB::query('insert into categories (id, name) values ("2", "projet2")');
+            // DB::query('insert into categories (id, name) values ("1", "projet1")');
+            // DB::query('insert into categories (id, name) values ("2", "projet2")');
 
         });
     }

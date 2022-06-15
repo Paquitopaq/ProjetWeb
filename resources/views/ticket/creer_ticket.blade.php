@@ -28,10 +28,7 @@
                             <label for="categories" class="col-md-4 control-label">categories</label>
                             <div class="col-md-6">
                                 <select id="categories" type="categories" class="form-control" name="categories">
-                                    <option value="">Categories</option>
-                                    <option value="Sale con">Projet1</option>
-                                    <option value="Sale con">Projet2</option>
-                                    <option value="Sale con">Matériel</option>
+                                    
                                     @foreach ($categories as $categories)
                                         <option value="{{ $categories->id }}">{{ $categories->name }}</option>
                                     @endforeach
