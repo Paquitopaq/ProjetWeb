@@ -1,5 +1,6 @@
 <div class="commentaires">
-    @foreach($ticket->commentaires as $commentaire)
+    
+    @foreach($ticket->Commentaires_id as $commentaire)
         <div class="panel panel-@if($ticket->user->id === $commentaire->user_id){{"default"}}@else{{"success"}}@endif">
             <div class="panel panel-heading">
                 {{ $commentaire->user->name }}

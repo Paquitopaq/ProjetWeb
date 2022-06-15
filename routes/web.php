@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('home');
 });
 
 
@@ -23,12 +23,12 @@ Route::get('/', function () {
 
 Route::get('/ticket', 'App\Http\Controllers\TicketController@test');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/nouveau-ticket', 'App\Http\Controllers\TicketController@create');
 Route::post('/nouveau-ticket', 'App\Http\Controllers\TicketController@store');
 Route::get('/mes_tickets', 'App\Http\Controllers\TicketController@userTickets');
 Route::get('/tickets/{ticket_id}', 'App\Http\Controllers\TicketController@show');
-Route::post('/commentaire', 'CommentaireController@postComment');
+Route::post('/commentaire', 'App\Http\Controllers\CommentaireController@postComment');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){

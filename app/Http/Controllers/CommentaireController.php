@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Commentaire;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Ticket;
 
 class CommentaireController extends Controller
 {
@@ -18,10 +19,7 @@ class CommentaireController extends Controller
             'user_id' => Auth::user()->id,
             'commentaire' => $request->input('commentaire')
         ]);
-        // send mail if the user commentairing is not the ticket owner
-        if($commentaire->ticket->user->id !== Auth::user()->id) {
-           
-        }
-        return redirect()->back()->with("status_ticket", "Your commentaire has be submitted.");
+        
+        return redirect()->back()->with("status_ticket", "Votre commentaire a été pris en compte");
     }
 }

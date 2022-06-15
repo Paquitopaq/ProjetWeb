@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Categorie;
 use Illuminate\Support\Str;
+use App\Models\Commentaires;
 
 class TicketController extends Controller
 {
@@ -103,9 +104,11 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show(Ticket $ticket)
-    {
-        $ticket = Ticket::where('tickets_id', $ticket_id)->get();
+    public function show($ticket_id)
+    {   
+        // $ticket = Ticket::where('users_id', Auth::user()->id)->paginate(1);
+        // $tickets = \DB::table('tickets')->where('ticket_id', $tickets)->get();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->firstOrFail();
         return view('ticket.display', compact('ticket'));
     }
 

@@ -12,15 +12,15 @@ class Ticket extends Model
 
     
     protected $fillable = [
-        'users_id', 'categorie_id', 'ticket_id', 'titre', 'priorité', 'description_probleme', 'status_ticket'
+        'users_id', 'categorie_id', 'ticket_id', 'titre', 'priorite', 'description_probleme', 'status_ticket'
     ];
-    public function category()
+    public function categorie()
     {
-        return $this->belongsTo('App\Models\Categorie','categories_id');
+        return $this->belongsTo('App\Models\Categorie','categorie_id');
     }
-    public function comments()
+    public function commentaire()
     {
-        return $this->hasMany('App\Models\Commentaires','commentaires_id');
+        return $this->hasMany('App\Models\Commentaires','commentaire_id');
     }
     public function user()
     {

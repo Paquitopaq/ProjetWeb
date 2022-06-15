@@ -1,4 +1,4 @@
-extends('layouts.app')
+@extends('layouts.app')
 @section('titre', $ticket->titre)
 @section('content')
     <div class="row">
@@ -15,9 +15,9 @@ extends('layouts.app')
                     @endif
                     <div class="ticket-info">
                         <p>{{ $ticket->description_probleme }}</p>
-                        <p>categorie: {{ $ticket->categorie->name }}</p>
+                        <p></p>
                         <p>
-                            @if ($ticket->status_ticket === 'Open')
+                            @if ($ticket->status_ticket === 'Ouvert')
                                 Status: <span class="label label-success">{{ $ticket->status_ticket }}</span>
                             @else
                                 Status: <span class="label label-danger">{{ $ticket->status_ticket }}</span>
@@ -28,9 +28,9 @@ extends('layouts.app')
                 </div>
             </div>
             <hr>
-            @include('tickets.commentaire')
+            @include('ticket.commentaire')
             <hr>
-            @include('tickets.reponse')
+            @include('ticket.reponse')
         </div>
     </div>
 @endsection
