@@ -14,7 +14,7 @@ extends('layouts.app')
                         </div>
                     @endif
                     <div class="ticket-info">
-                        <p>{{ $ticket->message }}</p>
+                        <p>{{ $ticket->description_probleme }}</p>
                         <p>categorie: {{ $ticket->categorie->name }}</p>
                         <p>
                             @if ($ticket->status_ticket === 'Open')

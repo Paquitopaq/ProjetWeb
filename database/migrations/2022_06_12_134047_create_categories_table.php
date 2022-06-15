@@ -16,6 +16,10 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
+            DB::query('insert into categories (id, name) values ("1", "projet1")');
+            DB::query('insert into categories (id, name) values ("2", "projet2")');
+
         });
     }
 

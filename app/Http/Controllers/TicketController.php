@@ -55,31 +55,32 @@ class TicketController extends Controller
         $this->validate($request,
         [
             'titre' => 'required',
-            // 'categorie' => 'required',
-            // 'priorite' => 'required',
-            // 'message' => 'required'
+            //'categorie' => 'required',
+            'priorite' => 'required',
+            'description_probleme' => 'required'
         ]);
 
         $ticket = new Ticket();
         $ticket-> titre = $request->input('titre');
         $ticket-> users_id = auth()->user()->id;
         $ticket-> ticket_id = strtoupper(str_random(10));
-        $ticket-> description_probleme = "test";
-        $ticket-> categorie_id = 1;
-        $ticket-> priorité = "low"; 
+        $ticket-> categorie_id = 5;
+        $ticket-> priorite = $request->input("priorite"); 
         $ticket-> status_ticket="Ouvert";     
-        // $ticket-> description_probleme = "blablaba";
+        $ticket-> description_probleme = $request->input('description_probleme');
         // $ticket-> categorie_id = 5;
         // $ticket-> priorite = "Haute";
         // $ticket-> status_ticket = "ouvert";
-        // $ticket-> ticket_id= "55";     
+        // $ticket-> ticket_id= "55";
+        //$ticket-> description_probleme = $request->input('decription_probleme');
+        //$ticket-> categorie_id = $request->input('categorie');     
         
         $ticket->save();
         
         
 
         return redirect()->back()->with("status_ticket", "Le ticket: #$ticket->ticket_id a été pris en compte.");
-        // redirect()->back()->with("status_ticket", "Le ticket: #$ticket->ticket_id a été pris en compte.");
+        
     
     }
     // $ticket = new Ticket(

@@ -24,12 +24,14 @@
                                 @endif
                             </div>
                         </div>
-                        <!--<div class="form-group{{ $errors->has('categories') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('categories') ? ' has-error' : '' }}">
                             <label for="categories" class="col-md-4 control-label">categories</label>
                             <div class="col-md-6">
                                 <select id="categories" type="categories" class="form-control" name="categories">
                                     <option value="">Categories</option>
-                                    <option value="Sale con">Sale con</option>
+                                    <option value="Sale con">Projet1</option>
+                                    <option value="Sale con">Projet2</option>
+                                    <option value="Sale con">Matériel</option>
                                     @foreach ($categories as $categories)
                                         <option value="{{ $categories->id }}">{{ $categories->name }}</option>
                                     @endforeach
@@ -41,18 +43,18 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('priorité') ? ' has-error' : '' }}">
-                            <label for="priorité" class="col-md-4 control-label">priorité</label>
+                        <div class="form-group{{ $errors->has('priorite') ? ' has-error' : '' }}">
+                            <label for="priorite" class="col-md-4 control-label">Priorité</label>
                             <div class="col-md-6">
-                                <select id="priorité" type="" class="form-control" name="priorité">
-                                    <option value="">Priorité</option>
-                                    <option value="low">Low</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="high">High</option>
+                                <select id="priorite" type="" class="form-control" name="priorite">
+                                    
+                                    <option value="low">Basse</option>
+                                    <option value="medium">Moyenne</option>
+                                    <option value="high">Haute</option>
                                 </select>
-                                @if ($errors->has('priorité'))
+                                @if ($errors->has('priorite'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('priorité') }}</strong>
+                                        <strong>{{ $errors->first('priorite') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -67,7 +69,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>-->
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
