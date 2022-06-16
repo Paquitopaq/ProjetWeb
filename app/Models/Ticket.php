@@ -12,7 +12,7 @@ class Ticket extends Model
 
     
     protected $fillable = [
-        'users_id', 'categorie_id', 'ticket_id', 'titre', 'priorite', 'description_probleme', 'status_ticket'
+        'users_id', 'categorie_id', 'ticket_id', 'titre', 'priorite', 'description_probleme', 'status_ticket','commentaire'
     ];
     public function categorie()
     {
@@ -21,6 +21,10 @@ class Ticket extends Model
     public function commentaire()
     {
         return $this->hasMany('App\Models\Commentaires','commentaire_id');
+    }
+    public function commentaires()
+    {
+        return $this->hasMany('App\Models\Commentaires','commentaire');
     }
     public function user()
     {

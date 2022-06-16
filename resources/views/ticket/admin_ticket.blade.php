@@ -27,7 +27,7 @@
                             @foreach ($tickets as $ticket)
                                 <tr>
                                     <td>
-                                        {{ $ticket->categorie}}
+                                        {{ $ticket->categorie->id}}
                                     </td>
                                     <td>
                                         <a href="{{ url('tickets/'. $ticket->ticket_id) }}">
@@ -35,19 +35,19 @@
                                         </a>
                                     </td>
                                     <td>
-                                        @if ($ticket->status === 'Ouvert')
-                                            <span class="label label-success">{{ $ticket->status }}</span>
+                                        @if ($ticket->status_ticket === 'Ouvert')
+                                            <span class="label label-success">{{ $ticket->status_ticket }}</span>
                                         @else
-                                            <span class="label label-danger">{{ $ticket->status }}</span>
+                                            <span class="label label-danger">{{ $ticket->status_ticket }}</span>
                                         @endif
                                     </td>
                                     <td>{{ $ticket->updated_at }}</td>
                                     <td>
-                                        @if($ticket->status === 'Ouvert')
-                                            <a href="{{ url('tickets/' . $ticket->ticket_id) }}" class="btn btn-primary">Comment</a>
+                                        @if($ticket->status_ticket === 'Ouvert')
+                                            <a href="{{ url('tickets/' . $ticket->ticket_id) }}" class="btn btn-primary">Commentaire(s)</a>
                                             <form action="{{ url('admin/close_ticket/' . $ticket->ticket_id) }}" method="POST">
                                                 {!! csrf_field() !!}
-                                                <button type="submit" class="btn btn-danger">Close</button>
+                                                <button type="submit" class="btn btn-danger">Fermé</button>
                                             </form>
                                         @endif
                                     </td>

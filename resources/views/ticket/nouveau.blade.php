@@ -39,9 +39,9 @@
 
 
 <div class="container mt-4">
-  @if(session('status'))
+  @if(session('status_ticket'))
     <div class="alert alert-success">
-        {{ session('status') }}
+        {{ session('status_ticket') }}
     </div>
   @endif
   <div class="card">

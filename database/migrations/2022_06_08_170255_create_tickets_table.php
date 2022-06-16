@@ -23,6 +23,7 @@ class CreateTicketsTable extends Migration
             $table->string('titre');
             $table->string('status_ticket');
             $table->string('ticket_id')->unique();
+            // $table->string('commentaire')->default();
 
         });
     }

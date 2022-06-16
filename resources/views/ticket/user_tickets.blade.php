@@ -25,17 +25,19 @@
                             <tbody>
                                 @foreach($tickets as $ticket)
                                     <tr>
-                                        
+                                        <td>
+                                            {{ $ticket->categorie->name }}
+                                        </td>
                                         <td>
                                             <a href="{{ url('tickets/' . $ticket->ticket_id) }}">
                                                 #{{ $ticket->ticket_id }} - {{ $ticket->titre }}
                                             </a>
                                         </td>
                                         <td>
-                                            @if($ticket->status == "Open")
-                                                <span class="label label-success">{{ $ticket->status }}</span>
+                                            @if($ticket->status_ticket == "Open")
+                                                <span class="label label-success">{{ $ticket->status_ticket }}</span>
                                             @else
-                                                <span class="label label-danger">{{ $ticket->status }}</span>
+                                                <span class="label label-danger">{{ $ticket->status_ticket }}</span>
                                             @endif
                                         </td>
                                         <td>

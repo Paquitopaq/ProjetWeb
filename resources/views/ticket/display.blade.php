@@ -14,8 +14,8 @@
                         </div>
                     @endif
                     <div class="ticket-info">
-                        <p>{{ $ticket->description_probleme }}</p>
-                        <p></p>
+                        <p>Description du problème :{{ $ticket->description_probleme }}</p>
+                        <p>Catégorie : {{ $ticket->categorie->name }}</p>
                         <p>
                             @if ($ticket->status_ticket === 'Ouvert')
                                 Status: <span class="label label-success">{{ $ticket->status_ticket }}</span>
@@ -23,14 +23,19 @@
                                 Status: <span class="label label-danger">{{ $ticket->status_ticket }}</span>
                             @endif
                         </p>
-                        <p>Created on: {{ $ticket->created_at->diffForHumans() }}</p>
+                        <p>Date de création: {{ $ticket->created_at->diffForHumans() }}</p>
                     </div>
                 </div>
             </div>
+
             <hr>
+
             @include('ticket.commentaire')
+
             <hr>
+
             @include('ticket.reponse')
+            
         </div>
     </div>
 @endsection

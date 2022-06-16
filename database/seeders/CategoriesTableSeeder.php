@@ -14,12 +14,15 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         \DB::table('categories')->insert([
+            'id'=>1,
             'name'=> 'Projet1',
         ]);
         \DB::table('categories')->insert([
+            'id'=>2,
             'name'=> 'Projet2',
         ]);
         \DB::table('categories')->insert([
+            'id'=>3,
             'name'=> 'Projet3',
         ]);
     }

@@ -12,14 +12,15 @@ class Commentaires extends Model
 
     
     protected $fillable = [
-        'ticket_id', 'users_id', 'commentaire'
+        'ticket_id', 'users_id', 'commentaire','commentaire_id',
     ];
     public function ticket()
-    {
+    {   
         return $this->belongsTo('App\Models\Ticket','ticket_id');
     }
     public function user()
     {
         return $this->belongsTo('App\Models\User','users_id');
     }
+    
 }

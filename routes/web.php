@@ -34,6 +34,7 @@ Route::post('/commentaire', 'App\Http\Controllers\CommentaireController@postComm
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){
     Route::get('/tickets', 'App\Http\Controllers\TicketController@index');
     Route::post('/close_ticket/{ticket_id}', 'App\Http\Controllers\TicketController@close');
+    Route::resource('/admin/users','App\Http\Controllers\Admin\UserController');
 });
 
 /*Route::group(['prefix' => 'dev', 'middleware' => 'dev'], function (){

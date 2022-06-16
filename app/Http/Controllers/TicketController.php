@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Categorie;
 use Illuminate\Support\Str;
 use App\Models\Commentaires;
+use App\Mail\Mail;
 
 class TicketController extends Controller
 {
@@ -65,10 +66,12 @@ class TicketController extends Controller
         $ticket-> titre = $request->input('titre');
         $ticket-> users_id = auth()->user()->id;
         $ticket-> ticket_id = strtoupper(str_random(10));
-        $ticket-> categorie_id = 5;
+        $ticket-> categorie_id = 1; //$request->input()
         $ticket-> priorite = $request->input("priorite"); 
         $ticket-> status_ticket="Ouvert";     
         $ticket-> description_probleme = $request->input('description_probleme');
+        //$request->validate(['piece_jointe'=>'required','image',]);
+        //request('piece_jointe')->store('piece_jointe');
         // $ticket-> categorie_id = 5;
         // $ticket-> priorite = "Haute";
         // $ticket-> status_ticket = "ouvert";
@@ -76,10 +79,10 @@ class TicketController extends Controller
         //$ticket-> description_probleme = $request->input('decription_probleme');
         //$ticket-> categorie_id = $request->input('categorie');     
         
+        #$mailer->sendTicketInformation(Auth::user(), $ticket);
         $ticket->save();
         
         
-
         return redirect()->back()->with("status_ticket", "Le ticket: #$ticket->ticket_id a été pris en compte.");
         
     
@@ -155,10 +158,11 @@ class TicketController extends Controller
     public function close($ticket_id)
     {
         $ticket = Ticket::where('ticket_id', $ticket_id)->firstOrFail();
-        $ticket->status = "Fermé";
+        $ticket->status_ticket = "Fermé";
         $ticket->save();
         $ticketOwner = $ticket->user;
         return redirect()->back()->with("status_ticket", "Le ticket a été traité");
     
 }
+   
 }

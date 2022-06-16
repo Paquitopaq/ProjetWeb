@@ -18,6 +18,7 @@ class CreateCommentairesTable extends Migration
             $table->integer('ticket_id')->unsigned();
             $table->integer('users_id')->unsigned();
             $table->text('commentaire');
+            $table->string('commentaire_id')->unique();
             $table->timestamps();
         });
     }
