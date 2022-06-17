@@ -23,7 +23,7 @@
                         <th scope="col">{{$user->droit}}</th>
                         </tr>
 
-                        <form action={{ route('users.edit', $user) }} method="POST">
+                        <form action= "{{ route('users.edit', $user) }}" method="POST">
                             @csrf
                             @method('PATCH')
                         
