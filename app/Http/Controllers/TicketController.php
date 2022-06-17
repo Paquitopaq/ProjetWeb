@@ -153,8 +153,8 @@ class TicketController extends Controller
 
     public function userTickets()
     {
-        $ticket = Ticket::where('users_id', Auth::user()->id)->paginate(30);
-        return view('ticket.user_tickets', compact('ticket'));
+        $tickets = Ticket::where('users_id', Auth::user()->id)->paginate(30);
+        return view('ticket.user_tickets', compact('tickets'));
     }
 
     public function close($ticket_id)
