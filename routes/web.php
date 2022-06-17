@@ -35,6 +35,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){
     Route::get('/tickets', 'App\Http\Controllers\TicketController@index');
     Route::post('/close_ticket/{ticket_id}', 'App\Http\Controllers\TicketController@close');
     Route::resource('/admin/users','App\Http\Controllers\Admin\UserController');
+    Route::resource('/admin/users/edit','App\Http\Controllers\Admin\UserController@edit');
+    
+    //Route::post('admin/user/edit', 'App\Http\Controllers\Admin\UserController@update')->name('user.update');
 });
 
 /*Route::group(['prefix' => 'dev', 'middleware' => 'dev'], function (){

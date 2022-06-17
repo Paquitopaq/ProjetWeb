@@ -14,8 +14,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.users.index');
+    {   
+        $users= user::all();
+        return view('admin.users.index')->with('users',$users);
     }
 
     /**
@@ -58,7 +59,13 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        
+       
+        return view('admin.users.edit',[
+        'user'=>$user,
+        
+    ]
+    );
     }
 
     /**
@@ -68,9 +75,23 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
-    {
-        //
+    public function update(Request $request, $id)
+    {   
+
+        $this->validate($request,
+        [
+            'name' => 'required',
+            'email' => 'required',
+            'droit' => 'required'|integer|'digits_between:0,2'
+        ]);
+
+        $user = User::find($id);
+        $user -> $name=$request->input('name');
+        $user -> $email=$request->input('email');
+        $user -> $droit=$request->input('droit');
+        $user ->update();
+        //return redirect()->back()->with("Modification pris en compte");
+        
     }
 
     /**

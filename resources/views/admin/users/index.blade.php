@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -19,13 +19,14 @@
                 <tbody>
                 @foreach($users as $user)
                     <tr>
-                    <th scope="row">{{ $user->id}}</th>
+                    <td>{{ $user->id}}</td>
                     <td> {{ $user->name}} </td>
                     <td> {{ $user->email}} </td>
                     <td>
-                        <a href=""><button class="btn btn-primary">Editer</button></a>
-                        <a href=""><button class="btn btn-warning">Supprimer</button></a>
-                        <!-- <a href=""><button class="btn btn-primary">Editer</button></a> -->
+                        <a href="{{route('users.edit',$user->id)}}"><button class="btn btn-primary">Editer</button></a>
+                        <a href="{{route('users.destroy',$user->id)}}"><button class="btn btn-warning">Supprimer</button></a>
+                        <br/>
+                        
                     </td>
                     </tr>
 
