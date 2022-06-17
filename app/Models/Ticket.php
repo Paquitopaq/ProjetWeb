@@ -22,10 +22,7 @@ class Ticket extends Model
     {
         return $this->hasMany('App\Models\Commentaires','commentaire_id');
     }
-    public function commentaires()
-    {
-        return $this->hasMany('App\Models\Commentaires','commentaire');
-    }
+    
     public function user()
     {
         return $this->belongsTo('App\Models\User','users_id');

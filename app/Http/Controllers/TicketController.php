@@ -146,13 +146,15 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $ticket->delete();
+        return view("home");
+
     }
 
     public function userTickets()
     {
-        $tickets = Ticket::where('users_id', Auth::user()->id)->paginate(30);
-        return view('ticket.user_tickets', compact('tickets'));
+        $ticket = Ticket::where('users_id', Auth::user()->id)->paginate(30);
+        return view('ticket.user_tickets', compact('ticket'));
     }
 
     public function close($ticket_id)

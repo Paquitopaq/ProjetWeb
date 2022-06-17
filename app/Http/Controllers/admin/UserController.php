@@ -82,15 +82,16 @@ class UserController extends Controller
         [
             'name' => 'required',
             'email' => 'required',
-            'droit' => 'required'|integer|'digits_between:0,2'
+            'droit'=> 'integer|digits_between:0,2'
         ]);
 
         $user = User::find($id);
-        $user -> $name=$request->input('name');
-        $user -> $email=$request->input('email');
-        $user -> $droit=$request->input('droit');
+        $user -> name=$request->input('name');
+        $user -> email=$request->input('email');
+        $user -> droit= (int)$request->input('droit');
         $user ->update();
-        //return redirect()->back()->with("Modification pris en compte");
+        $user->save();
+        return redirect()->route('users.index')->with("ok");
         
     }
 
@@ -101,7 +102,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
-    {
-        //
+    {   
+        
+        $user->delete();
+        return redirect()->route('users.index')->with("ok");
     }
 }

@@ -10,7 +10,7 @@
                     <i class="fa fa-ticket">Mes tickets</i>
                 </div>
                 <div class="panel-body">
-                    @if($tickets->isEmpty())
+                    @if($ticket->isEmpty())
                         <p>Vous n'avez aucun ticket en cours</p>
                     @else
                         <table class="table">
@@ -23,7 +23,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($tickets as $ticket)
+                                @foreach($ticket as $ticket)
                                     <tr>
                                         <td>
                                             {{ $ticket->categorie->name }}
@@ -47,7 +47,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $tickets->render() }}
+                        {{ $ticket->render() }}
                     @endif
                 </div>
             </div>

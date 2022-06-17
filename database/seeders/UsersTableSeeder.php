@@ -32,7 +32,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'dev',
             'email' => 'dev@gmail.com',
             'password' => \Hash::make('dev1234'),
-            'droit'=>1
+            'droit'=>2
         ]);
+
     }
 }

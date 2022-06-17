@@ -50,6 +50,11 @@
                                                 <button type="submit" class="btn btn-danger">Fermé</button>
                                             </form>
                                         @endif
+                                        
+                                        <form action="{{ route('ticket.destroy',$ticket->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-warning">Supprimer</button>
                                     </td>
                                 </tr>
                             @endforeach

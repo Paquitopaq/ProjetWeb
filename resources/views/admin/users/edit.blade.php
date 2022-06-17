@@ -23,7 +23,7 @@
                         <th scope="col">{{$user->droit}}</th>
                         </tr>
 
-                        <form action= "{{ route('users.edit', $user) }}" method="POST">
+                        <form action= "{{ route('users.update', $user) }}" method="POST">
                             @csrf
                             @method('PATCH')
                         
@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="">Utilisateur Droit</label>
-                                <input type="text" name="course" value="{{$user->droit}}" class="form-control">
+                                <input type="number" name="course" value="{{$user->droit}}" class="form-control">
                             </div>
                             
                             <button type="submit" class="btn btn-primary">Editer</button>

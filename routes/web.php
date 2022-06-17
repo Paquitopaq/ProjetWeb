@@ -36,14 +36,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){
     Route::post('/close_ticket/{ticket_id}', 'App\Http\Controllers\TicketController@close');
     Route::resource('/admin/users','App\Http\Controllers\Admin\UserController');
     Route::resource('/admin/users/edit','App\Http\Controllers\Admin\UserController@edit');
-    
-    //Route::post('admin/user/edit', 'App\Http\Controllers\Admin\UserController@update')->name('user.update');
+    Route::resource('/ticket','App\Http\Controllers\TicketController');
+    Route::post('admin/user/edit', 'App\Http\Controllers\Admin\UserController@update');
 });
 
-/*Route::group(['prefix' => 'dev', 'middleware' => 'dev'], function (){
+Route::group(['prefix' => 'dev', 'middleware' => 'dev'], function (){
     Route::get('/tickets', 'App\Http\Controllers\TicketController@index');
     Route::post('close_ticket/{ticket_id}', 'App\Http\Controllers\TicketController@close');
-});*/
+});
 
 Auth::routes();
 
